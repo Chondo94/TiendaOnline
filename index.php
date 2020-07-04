@@ -1,10 +1,14 @@
 <?php
+//inicio Sesion para que me lo reconozca cuando registro el usuario
+session_start();
 // Tengo acceso a todos lo controladores
 require_once 'autoload.php';
+require_once 'config/db.php';
 // este requiere es parte de los parametros que me sirven para limpiar la url
 require_once 'config/parameters.php';
 require_once 'views/layout/header.php';
 require_once 'views/layout/sidebar.php';
+
 
 // creo la funcion error para retornar una vista al usuario.
 function show_error(){
