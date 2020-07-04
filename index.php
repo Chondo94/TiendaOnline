@@ -6,6 +6,8 @@ require_once 'autoload.php';
 require_once 'config/db.php';
 // este requiere es parte de los parametros que me sirven para limpiar la url
 require_once 'config/parameters.php';
+// archivo que posee metodos que me seran de utilidad, como el de cerrar la session.
+require_once 'helpers/utils.php';
 require_once 'views/layout/header.php';
 require_once 'views/layout/sidebar.php';
 
