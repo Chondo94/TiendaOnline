@@ -51,11 +51,11 @@ class Usuario{
 
 	function getPassword() {
         // encripto la contraseña para mayor seguridad
-		return $this->password;
+		return password_hash($this->db->real_escape_string($this->password), PASSWORD_BCRYPT, ['cost' => 4]);
 	}
 
 	function setPassword($password) {
-		$this->password = password_hash($this->db->real_escape_string($password), PASSWORD_BCRYPT, ['cost' => 4]);
+		$this->password = $password;
 	}
 
 	function getRol() {
@@ -83,6 +83,36 @@ class Usuario{
         if($save){
             $result = true;
         }
+        return $result;
+    }
+
+    //Metodo para login de usuario
+    public function login(){
+        $result = false;
+        $email = $this->email;
+        $password = $this->password;
+        
+        //Comprobamos si existe el usuario
+        $sql = "SELECT * FROM usuarios WHERE email = '$email'";
+        $login = $this->db->query($sql);
+
+        /* 
+            Verificamos si la consulta solo posee 1 registro en la fila
+            para pode verificar la contraseña de ese registro, ya que si
+            da mas de 1 quiere decir que son mas de 1 usuario y por lo tanto
+            no podemos verificar la contraseña de todos a la vez.
+        */
+        if($login && $login->num_rows == 1){
+            $usuario = $login->fetch_object();
+
+            //Verificar si la contraseña es correcta
+            $verify = password_verify($password, $usuario->password);
+
+            if($verify){
+                $result = $usuario;
+            }
+        }
+
         return $result;
     }
 
