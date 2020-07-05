@@ -12,7 +12,7 @@ class Categoria{
     }
 
 	function getId() {
-		return $this->$id;
+		return $this->id;
 	}
 
 	function setId($id) {
@@ -20,17 +20,30 @@ class Categoria{
 	}
 
 	function getNombre() {
-		return $this->$nombre;
+		return $this->nombre;
 	}
 
 	function setNombre($nombre) {
-		$this->nombre = $nombre;
+        // Limpiamos nuestro string, para evitar inyeccion sql
+		$this->nombre = $this->db->real_escape_string($nombre);
     }
     
     // metodo para obtener todas la categorias
     public function getAll(){
-        $categorias = $this->db->query("SELECT * FROM categorias;");
+        $categorias = $this->db->query("SELECT * FROM categorias ORDER BY id DESC;");
         return $categorias;
+    }
+
+    // metodo del modelo para guardar la categoria
+    public function save(){
+        $sql = "INSERT INTO categorias VALUES (NULL, '{$this->getNombre()}');";
+        $save = $this->db->query($sql);
+
+        $result = false;
+        if($save){
+            $result = true;
+        }
+        return $result;
     }
 
 }//Fin de la clase

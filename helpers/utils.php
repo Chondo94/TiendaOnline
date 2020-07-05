@@ -11,4 +11,13 @@ class Utils{
 
         return $name;
     }
+
+    // metodo para comprobar si el usuario es administrador y asi que pueda gestionar las categorias y productos
+    public static function isAdmin(){
+        if(!isset($_SESSION['admin'])){
+            header("Location:".base_url);
+        }else{
+            return true;
+        }
+    }
 }
