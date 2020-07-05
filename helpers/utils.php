@@ -20,4 +20,12 @@ class Utils{
             return true;
         }
     }
+
+    // Metodo para mostrar las categorias en el header
+    public static function showCategorias(){
+        require_once 'models/categoria.php';
+        $categoria = new Categoria();
+        $categorias = $categoria->getAll();
+        return $categorias;
+    }
 }
