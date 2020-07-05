@@ -28,6 +28,9 @@
                     <li>
                         <a href="#">Gestionar categorias</a>
                     </li>
+                    <li>
+                        <a href="<?=base_url?>usuario/logout">Cerrar sesion</a>
+                    </li>
                 </ul>
             </div>
         
