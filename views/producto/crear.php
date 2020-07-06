@@ -26,7 +26,7 @@
     </select>
 
     <label for="imagen">Imagen</label>
-    <input type="file" name="imagen" required/>
+    <input type="file" name="imagen"/>
 
     <input type="submit" value="Guardar producto" />
 </form>

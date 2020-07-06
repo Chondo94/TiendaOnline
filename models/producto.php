@@ -10,6 +10,7 @@ class Producto{
     private $oferta;
     private $fecha;
     private $imagen;
+
     private $db;
     
     // Conexion a la base de datos
@@ -18,7 +19,7 @@ class Producto{
     }
 
 
-	public function getId() {
+	function getId() {
 		return $this->id;
 	}
 
@@ -26,7 +27,7 @@ class Producto{
 		$this->id = $id;
 	}
 
-	public function getCategoria_id() {
+	function getCategoria_id() {
 		return $this->categoria_id;
 	}
 
@@ -34,56 +35,56 @@ class Producto{
 		$this->categoria_id = $categoria_id;
 	}
 
-	public function getNombre() {
-		return $this->$nombre;
+	function getNombre() {
+		return $this->nombre;
 	}
 
 	function setNombre($nombre) {
-		$this->nombre = $nombre;
-	}
+		$this->nombre = $this->db->real_escape_string($nombre);
+    }
 
-	public function getDescripcion() {
-		return $this->$descripcion;
+	function getDescripcion() {
+		return $this->descripcion;
 	}
 
 	function setDescripcion($descripcion) {
-		$this->descripcion = $descripcion;
+		$this->descripcion = $this->db->real_escape_string($descripcion);
 	}
 
-	public function getPrecio() {
-		return $this->$precio;
+	function getPrecio() {
+		return $this->precio;
 	}
 
 	function setPrecio($precio) {
-		$this->precio = $precio;
+		$this->precio = $this->db->real_escape_string($precio);
 	}
 
-	public function getStock() {
-		return $this->$stock;
+	function getStock() {
+		return $this->stock;
 	}
 
 	function setStock($stock) {
-		$this->stock = $stock;
+		$this->stock = $this->db->real_escape_string($stock);
 	}
 
-	public function getOferta() {
-		return $this->$oferta;
+	function getOferta() {
+		return $this->oferta;
 	}
 
 	function setOferta($oferta) {
-		$this->oferta = $oferta;
+		$this->oferta = $this->db->real_escape_string($oferta);
 	}
 
-	public function getFecha() {
-		return $this->$fecha;
+	function getFecha() {
+		return $this->fecha;
 	}
 
 	function setFecha($fecha) {
 		$this->fecha = $fecha;
 	}
 
-	public function getImagen() {
-		return $this->$imagen;
+	function getImagen() {
+		return $this->imagen;
 	}
 
 	function setImagen($imagen) {
@@ -91,9 +92,31 @@ class Producto{
     }
     
     // Metodo para listar los productos
-    public function getall(){
+    function getall(){
         $productos = $this->db->query("SELECT * FROM productos ORDER BY id DESC");
         return $productos;
     }
 
+     // metodo para guardar toda la informacion de un nuevo producto
+     public function save(){
+        $sql = "INSERT INTO productos VALUES (
+            null, 
+            {$this->getCategoria_id()}, 
+            '{$this->getNombre()}', 
+            '{$this->getDescripcion()}', 
+            {$this->getPrecio()}, 
+            {$this->getStock()}, 
+            null, 
+            CURDATE(), 
+            null 
+            );";
+        $save = $this->db->query($sql);
+
+        $result = false;
+        if($save){
+            $result = true;
+        }
+        return $result;
+    }
+    
 }//fin de la clase
