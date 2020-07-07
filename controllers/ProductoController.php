@@ -44,7 +44,25 @@ class productoController{
                 $producto->setStock($stock);
                 $producto->setCategoria_id($categoria);
 
-        
+                // Recibir y Guardar la imagen
+                $file = $_FILES['imagen'];
+                $filename = $file['name'];
+                $mimetype = $file['type'];
+
+                // Verificamos si estamos recibiendo un archivo tipo imagen
+                if($mimetype == "image/jpg" || $mimetype == "image/jpeg" || $mimetype == "image/png" || $mimetype == "image/gif"){
+                /*
+                 vemos el directorio donde se guardara la imagen y si este no existe, por medio del
+                 mkdir se crea el directerio con subdirectioros y para que eso funcion se agrega un tercer
+                 parametro que es true.
+                */
+                    if(!is_dir('uploads/images')){
+                        mkdir('uploads/images', 0777, true);
+                    }
+
+                    move_uploaded_file($file['tmp_name'], 'uploads/images/'.$filename);
+                    $producto->setImagen($filename);
+                }
                 
                 $save = $producto->save();
                 if($save){
