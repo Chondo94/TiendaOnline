@@ -46,4 +46,17 @@ class Categoria{
         return $result;
     }
 
+	// Metodo de eliminar para llamarlo desde el controlador
+	public function delete(){
+        $sql = "DELETE FROM categorias WHERE id={$this->id}";
+        $delete = $this->db->query($sql);
+    
+        $result = false;
+            if($delete){
+                $result = true;
+            }
+            return $result;
+        
+        }
+
 }//Fin de la clase

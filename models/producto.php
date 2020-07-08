@@ -95,6 +95,12 @@ class Producto{
     function getall(){
         $productos = $this->db->query("SELECT * FROM productos ORDER BY id DESC");
         return $productos;
+	}
+	
+	// Metodo para listar 1 solo producto en el formulario de actualizacion
+    function getOne(){
+	$producto = $this->db->query("SELECT * FROM productos WHERE id = {$this->getId()}");
+        return $producto->fetch_object();
     }
 
      // metodo para guardar toda la informacion de un nuevo producto
@@ -117,6 +123,39 @@ class Producto{
             $result = true;
         }
         return $result;
-    }
+	}
+
+	     // metodo para editar toda la informacion de un producto creado
+		 public function edit(){
+			$sql = "UPDATE productos SET nombre='{$this->getNombre()}', descripcion='{$this->getDescripcion()}', precio={$this->getPrecio()}, stock={$this->getStock()}, categoria_id={$this->getCategoria_id()} ";
+
+				if($this->getImagen() != null){
+					$sql .= ", imagen = '{$this->getImagen()}'";
+				}
+
+			// sacamos el id que tenemos guardado en nuestro objeto
+			$sql .= "WHERE id={$this->id};";
+			
+			$save = $this->db->query($sql);
+	
+			$result = false;
+			if($save){
+				$result = true;
+			}
+			return $result;
+		}
+	
+	// Metodo de eliminar para llamarlo desde el controlador
+	public function delete(){
+	$sql = "DELETE FROM productos WHERE id={$this->id}";
+	$delete = $this->db->query($sql);
+
+	$result = false;
+        if($delete){
+            $result = true;
+        }
+        return $result;
+	
+	}
     
 }//fin de la clase
