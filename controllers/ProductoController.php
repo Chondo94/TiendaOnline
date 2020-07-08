@@ -5,6 +5,9 @@ class productoController{
     // function index sirve para mostrar el contendido qu quiero segun la ruta que especifique.
     public function index(){
         // echo "Controlador productos, Accion Index";
+        // creo mi objeto para sacar productos utilizo el metodo ramdom de mi modelo para que aparezca aleatoriamente
+        $producto = new Producto();
+        $productos = $producto->getRandom(6);
 
         // Renderizar a la Vista
         // Ruta especificada

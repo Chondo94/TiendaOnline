@@ -96,6 +96,13 @@ class Producto{
         $productos = $this->db->query("SELECT * FROM productos ORDER BY id DESC");
         return $productos;
 	}
+
+	// Metodo para mostrar algunos productos aleatorios en a pagina principal
+	public function getRandom($limit){
+		$productos = $this->db->query("SELECT * FROM productos ORDER BY RAND() LIMIT $limit");
+		return $productos;
+	}
+	
 	
 	// Metodo para listar 1 solo producto en el formulario de actualizacion
     function getOne(){
