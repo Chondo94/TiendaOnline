@@ -34,6 +34,12 @@ class Categoria{
         return $categorias;
     }
 
+    // metodo para obtener los productos por categoria, aca saco el objeto
+    public function getOne(){
+        $categoria = $this->db->query("SELECT * FROM categorias WHERE id={$this->getId()}");
+        return $categoria->fetch_object();
+    }
+
     // metodo del modelo para guardar la categoria
     public function save(){
         $sql = "INSERT INTO categorias VALUES (NULL, '{$this->getNombre()}');";

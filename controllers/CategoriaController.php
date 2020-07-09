@@ -1,5 +1,7 @@
 <?php
 require_once 'models/categoria.php';
+// importo el modelo del producto para mostrar los productos de las categorias especificas
+require_once 'models/producto.php';
 
 class categoriaController{
 
@@ -10,6 +12,27 @@ class categoriaController{
         $categorias = $categoria->getAll();
         // echo "Controlador categorias, Accion Index";
         require_once 'views/categoria/index.php';
+    }
+
+    public function ver(){
+        if(isset($_GET['id'])){
+            // guardo el id que esta en la url
+            $id = $_GET['id'];
+
+            /* Conseguir la categoria */
+            // utilizo el metodo getOne del modelo categoria para obtener los productos de una categoria
+            $categoria = new Categoria();
+            // le paso el id que me llega por la url
+            $categoria->setId($id);
+            $categoria = $categoria->getOne();
+           
+            // Conseguir el producto
+            $producto = new Producto();
+            $producto->setCategoria_id($id);
+            $productos = $producto->getAllCategory();
+        }
+        
+        require_once 'views/categoria/ver.php';
     }
 
     // metodo para crear categorias
