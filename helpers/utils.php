@@ -28,4 +28,23 @@ class Utils{
         $categorias = $categoria->getAll();
         return $categorias;
     }
+
+    // Metodo para que saque las estadisticas del carrito
+    public static function statsCarrito(){
+        $stats = array(
+            'count' => 0,
+            'total' => 0
+        );
+
+        if(isset($_SESSION['carrito'])){
+            $stats['count'] = count($_SESSION['carrito']);
+            
+            // bucle para sacar el total de costo de los productos que agregue al carrito
+            foreach($_SESSION['carrito'] as $producto){
+                $stats['total'] += $producto['precio'] * $producto['unidades'];
+            }
+        }
+
+        return $stats;
+    }
 }

@@ -12,7 +12,8 @@
         <div class="data">
             <p class="description"><?=$product->descripcion?></p>
             <p class="price">Q.<?=$product->precio?></p>
-            <a href="#" class="button">Comprar</a>
+            <!-- el href apunta o me lleva al controlador de carrito y al metodo add() -->
+            <a href="<?=base_url?>carrito/add&id=<?=$product->id?>" class="button">Comprar</a>
         </div>
     </div>
     

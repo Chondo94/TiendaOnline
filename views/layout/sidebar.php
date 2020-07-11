@@ -1,5 +1,14 @@
         <!-- Barra Lateral -->
         <aside id="lateral">
+            <div id="carrito" class="block_aside">
+                <h3>Carrito</h3>
+                <ul>
+                <?php $stats = Utils::statsCarrito(); ?>
+                    <li><a href="<?=base_url?>carrito/index" style="text-decoration: none;">Productos (<?=$stats['count']?>)</a></li>
+                    <li><a href="<?=base_url?>carrito/index" style="text-decoration: none;">Total: Q.<?=$stats['total']?></a></li>
+                    <li><a href="<?=base_url?>carrito/index" style="text-decoration: none;">Ver</a></li>
+                </ul>
+            </div>
 
             <div id="login" class="block_aside">
 
