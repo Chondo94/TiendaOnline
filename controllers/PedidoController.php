@@ -29,7 +29,10 @@ class pedidoController{
                 // Guardo el pedido en la base de datos y verifico si se guardo correctamente
                 $save = $pedido->save();
 
-                if($save){
+                // Guardar linea de pedido
+                $save_linea = $pedido->save_linea();
+
+                if($save & $save_linea){
                     $_SESSION['pedido'] = "complete";
                 }else{
                     $_SESSION['pedido'] = "failed";
@@ -38,10 +41,17 @@ class pedidoController{
             }else{
                 $_SESSION['pedido'] = "failed";
             }
+
+            header("Location:".base_url.'pedido/confirmado');
                 
         }else{
             // redirigir al index.
             header("Location".base_url);
         }
     }
+
+    public function confirmado(){
+        require_once 'views/pedido/confirmado.php';
+    }
+
 }
