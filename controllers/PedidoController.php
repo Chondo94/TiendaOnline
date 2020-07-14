@@ -66,6 +66,7 @@ class pedidoController
         require_once 'views/pedido/confirmado.php';
     }
 
+    // metodo para sacar los pedidos de un usuario en concreto
     public function mis_pedidos()
     {
         // usos el metodo que tengo en mi helpers para restringir el acceso a esta url o ubicacion.
@@ -98,7 +99,21 @@ class pedidoController
 
             require_once 'views/pedido/detalle.php';
         } else {
-            header('Location:' . base_url . 'pedido/detalle.php');
+            header('Location:'.base_url.'pedido/mis_pedidos.php');
         }
     }
+
+    // metodo para sacar todos los pedidos para gestionarlos
+    public function gestion(){
+        // usos el metodo que tengo en mi helpers para restringir el acceso a esta url o ubicacion.
+        Utils::isAdmin();
+        $gestion = true;
+
+        $pedido = new Pedido();
+        // Sacar los pedidos del usuario
+        $pedidos = $pedido->getAll();
+
+        require_once 'views/pedido/mis_pedidos.php';
+    }
+
 }
