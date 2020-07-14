@@ -125,6 +125,31 @@ class Pedido
         return $producto->fetch_object();
     }
 
+    function getOneByUser()
+    {
+        $sql = "SELECT p.id, p.coste FROM pedidos p "
+                // esto inner lo puedo evitar ."INNER JOIN lineas_pedidos lp ON lp.pedido_id = p.id "
+                ."WHERE p.usuario_id = {$this->getUsuario_Id()} ORDER BY id DESC LIMIT 1";
+        $pedido = $this->db->query($sql);
+        
+        return $pedido->fetch_object();
+    }
+
+    // Metodo para sacar todos los pruductos que se encuentran en la lineas de pedios
+    public function getProductosByPedido($id){
+       /* 
+        $sql = "SELECT * FROM productos WHERE id IN "
+        ."(SELECT productos_id FROM lineas_pedidos WHERE pedido_id={$id})";
+         */
+        $sql = "SELECT pr.*, lp.unidades FROM productos pr "
+                . "INNER JOIN lineas_pedidos lp ON pr.id = lp.producto_id "
+                . "WHERE lp.pedido_id={$id}";
+
+        $productos = $this->db->query($sql);
+        
+        return $productos;
+    }
+
     // metodo para guardar toda la informacion de un nuevo producto
     public function save()
     {
