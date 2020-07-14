@@ -21,6 +21,15 @@ class Utils{
         }
     }
 
+    // Metodo para comprobar si estamos identificados y si no comple esta condicion de estar identificados este metodo nos ayuda a redirigir al menu principal
+    public static function isIdentity(){
+        if(!isset($_SESSION['identity'])){
+            header("Location:".base_url);
+        }else{
+            return true;
+        }
+    }
+
     // Metodo para mostrar las categorias en el header
     public static function showCategorias(){
         require_once 'models/categoria.php';

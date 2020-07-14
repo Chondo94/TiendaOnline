@@ -64,4 +64,17 @@ class pedidoController{
         require_once 'views/pedido/confirmado.php';
     }
 
+    public function mis_pedidos(){
+        // usos el metodo que tengo en mi helpers para restringir el acceso a esta url o ubicacion.
+        Utils::isIdentity();
+        $usuario_id = $_SESSION['identity']->id;
+        $pedido = new Pedido();
+
+        // Sacar los pedidos del usuario
+        $pedido->setUsuario_id($usuario_id);
+        $pedidos = $pedido->getAllByUser();
+        
+        require_once 'views/pedido/mis_pedidos.php';
+    }
+
 }

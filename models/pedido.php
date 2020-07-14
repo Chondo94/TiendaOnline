@@ -125,6 +125,7 @@ class Pedido
         return $producto->fetch_object();
     }
 
+    // Metodo para sacar todos lor productos del ultimo pedido de un usuario en especifico
     function getOneByUser()
     {
         $sql = "SELECT p.id, p.coste FROM pedidos p "
@@ -133,6 +134,17 @@ class Pedido
         $pedido = $this->db->query($sql);
         
         return $pedido->fetch_object();
+    }
+
+    // Metodo para sacar todos los pedidos de un usuario
+    function getAllByUser()
+    {
+        $sql = "SELECT p.* FROM pedidos p "
+                // esto inner lo puedo evitar ."INNER JOIN lineas_pedidos lp ON lp.pedido_id = p.id "
+                ."WHERE p.usuario_id = {$this->getUsuario_Id()} ORDER BY id DESC";
+        $pedido = $this->db->query($sql);
+        
+        return $pedido;
     }
 
     // Metodo para sacar todos los pruductos que se encuentran en la lineas de pedios
