@@ -4,7 +4,11 @@ require_once 'models/producto.php';
 class carritoController{
 
     public function index(){
-        $carrito = $_SESSION['carrito'];
+        if(isset($_SESSION['carrito']) && count($_SESSION['carrito']) >= 1){
+            $carrito = $_SESSION['carrito'];
+        }else{
+            $carrito = array();
+        }
         require_once 'views/carrito/index.php';
     }
 
@@ -45,10 +49,16 @@ class carritoController{
         header('Location:'.base_url."carrito/index");
     }
 
+    // Metodo para eliminar un producto del carrito de compra
     public function remove(){
-        
+        if(isset($_GET['index'])){
+            $index = $_GET['index'];
+            unset($_SESSION['carrito'][$index]);
+        }
+        header('Location:'.base_url."carrito/index");
     }
 
+    // Metodo para eliminar todos los producto del carrito de compra
     public function delete_all(){
         unset($_SESSION['carrito']);
         header('Location:'.base_url."carrito/index");
