@@ -380,13 +380,14 @@ button{
 .button-delete{
     display: block;
     float: left;
-    width: 100px;
+    width: 102px;
 }
 
 .button-carrito{
-    width: 70px;
+    width: 116px;
     margin: 0px auto;
     text-align: center;
+    height: 39px;
 }
 
 .total-carrito{
@@ -413,8 +414,8 @@ button{
 
 .updown-unidades .button{
     display: block;
-    width: 20px;
+    width: 28px;
     float: left;
-    padding:2px;
-    margin: 7px;
+    padding:5px;
+    margin: 6px;
 }

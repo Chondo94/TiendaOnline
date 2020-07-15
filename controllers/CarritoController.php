@@ -58,6 +58,28 @@ class carritoController{
         header('Location:'.base_url."carrito/index");
     }
 
+    // Metodo para incrementar los productos especificos en el carrito de compra
+    public function up(){
+        if(isset($_GET['index'])){
+            $index = $_GET['index'];
+            $_SESSION['carrito'][$index]['unidades']++;
+        }
+        header('Location:'.base_url."carrito/index");
+    }
+
+    // Metodo para disminuir los productos en el carrito
+    public function down(){
+        if(isset($_GET['index'])){
+            $index = $_GET['index'];
+            $_SESSION['carrito'][$index]['unidades']--;
+
+            if($_SESSION['carrito'][$index]['unidades'] == 0){
+                unset($_SESSION['carrito'][$index]);
+            }
+        }
+        header('Location:'.base_url."carrito/index");
+    }
+
     // Metodo para eliminar todos los producto del carrito de compra
     public function delete_all(){
         unset($_SESSION['carrito']);
