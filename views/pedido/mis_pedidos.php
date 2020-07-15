@@ -1,7 +1,7 @@
-<?php if(isset($gestion)): ?>
+<?php if (isset($gestion)) : ?>
     <h1>Gestionar pedidos</h1>
 
-<?php else: ?>
+<?php else : ?>
     <h1>Mis pedidos</h1>
 
 <?php endif; ?>
@@ -27,7 +27,7 @@
                 <?= $ped->fecha ?>
             </td>
             <td>
-                <?= $ped->estado ?>
+                <?=Utils::showStatus($ped->estado) ?><br>
             </td>
         </tr>
     <?php endwhile; ?>

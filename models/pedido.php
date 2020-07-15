@@ -206,7 +206,23 @@ class Pedido
             $result = true;
         }
         return $result;
-
-        var_dump($pedido_id);
     }
+
+    // Metodo para que me permita actualizar un pedido en especifico
+    public function edit(){
+        $sql = "UPDATE pedidos SET estado='{$this->getEstado()}' WHERE id={$this->getId()};";
+        
+        /* // sacamos el id que tenemos guardado en nuestro objeto
+        $sql .= "WHERE id={$this->getId()};"; */
+        
+        $save = $this->db->query($sql);
+
+        $result = false;
+        if($save){
+            $result = true;
+        }
+        return $result;
+    }
+
+
 }//fin de la clase

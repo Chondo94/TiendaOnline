@@ -56,4 +56,21 @@ class Utils{
 
         return $stats;
     }
+
+    //Metodo para definir el estado del producto
+    public static function showStatus($status){
+        $value = 'pendiente';
+
+        if($status == 'confirm'){
+            $value = 'pendiente';
+        }elseif($status == 'preparation'){
+            $value = 'En preparacion';
+        }elseif($status == 'ready'){
+            $value = 'Preparado para enviar';
+        }elseif($status == 'sended'){
+            $value = 'Enviado';
+        }
+
+        return $value;
+    }
 }
