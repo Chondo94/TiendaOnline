@@ -217,9 +217,9 @@ input[type="email"]:focus{
 
 input[type="button"],
 input[type="submit"],
-button, .button{
+/* button, .button{
     display: block;
-    border-radius: 2px;
+    border-radius: 15px;
     width: auto;
     padding: 5px;
     padding-left: 10px;
@@ -228,18 +228,19 @@ button, .button{
     background: #2979CD;
     border: 1px solid #11608E;
     cursor:pointer;
-}
+} */
 
-.button{
+/* .button{
     background: #33AE3D;
-    color: white !important;
+    color: black !important;
     text-decoration: none;
-}
+} */
 
 .button-small{
     width: 120px;
     text-align: center;
     margin-bottom: 20px;
+
 }
 
 .button-gestion{
@@ -412,7 +413,7 @@ button{
     margin: 0px auto;
 }
 
-.updown-unidades .button{
+.updown-unidades /* .button */{
     display: block;
     width: 28px;
     float: left;

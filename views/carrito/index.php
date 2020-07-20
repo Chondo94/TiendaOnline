@@ -33,12 +33,12 @@
                 <td>
                     <?= $elemento['unidades'] ?>
                     <div class="updown-unidades">
-                        <a href="<?= base_url ?>carrito/up&index=<?= $indice ?>" class="button">+</a>
-                        <a href="<?= base_url ?>carrito/down&index=<?= $indice ?>" class="button">-</a>
+                        <a href="<?= base_url ?>carrito/up&index=<?= $indice ?>" class="button is-primary">+</a>
+                        <a href="<?= base_url ?>carrito/down&index=<?= $indice ?>" class="button is-primary">-</a>
                     </div>
                 </td>
                 <td>
-                    <a href="<?= base_url ?>carrito/remove&index=<?= $indice ?>" class="button button-carrito button-red">Quitar producto</a>
+                    <a href="<?= base_url ?>carrito/remove&index=<?= $indice ?>" class="button button-carrito is-danger">Quitar producto</a>
                 </td>
             </tr>
         <?php endforeach; ?>
@@ -46,12 +46,12 @@
 
     <br />
     <div class="delete-carrito">
-        <a href="<?= base_url ?>carrito/delete_all" class="button button-delete button-red">Vaciar Carrito</a>
+        <a href="<?= base_url ?>carrito/delete_all" class="button button-delete is-danger">Vaciar Carrito</a>
     </div>
     <div class="total-carrito">
         <?php $stats = Utils::statsCarrito(); ?>
         <h3>Precio Total: Q.<?= $stats['total'] ?></h3>
-        <a href="<?= base_url ?>pedido/hacer" class="button button-pedido">Realizar el Pedido</a>
+        <a href="<?= base_url ?>pedido/hacer" class="button button-pedido is-primary">Realizar el Pedido</a>
     </div>
 
 <?php else : ?>

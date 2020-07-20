@@ -18,7 +18,7 @@
     ?>
         <tr>
             <td>
-                <a href="<?= base_url ?>pedido/detalle&id=<?= $ped->id ?>"><?= $ped->id ?></a>
+                <a class="button is-small is-info" href="<?= base_url ?>pedido/detalle&id=<?= $ped->id ?>">Pedido No.<?= $ped->id ?></a>
             </td>
             <td>
                 Q.<?= $ped->coste ?>

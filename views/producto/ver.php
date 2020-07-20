@@ -13,7 +13,7 @@
             <p class="description"><?=$product->descripcion?></p>
             <p class="price">Q.<?=$product->precio?></p>
             <!-- el href apunta o me lleva al controlador de carrito y al metodo add() -->
-            <a href="<?=base_url?>carrito/add&id=<?=$product->id?>" class="button">Comprar</a>
+            <a href="<?=base_url?>carrito/add&id=<?=$product->id?>" class="button is-primary">Comprar</a>
         </div>
     </div>
     

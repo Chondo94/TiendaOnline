@@ -15,13 +15,24 @@
                 <?php if(!isset($_SESSION['identity'])): ?>
                 <h3>Ingresar</h3>
                 <form action="<?=base_url?>usuario/login" method="post">
-                    <label for="email">Email</label>
-                    <input type="email" name="email">
-
-                    <label for="password">Contraseña</label>
-                    <input type="password" name="password">
-                    
-                    <input type="submit" value="Enviar">
+                <div class="fiel">
+                    <div class="control">
+                        <label class="label" for="email">Email</label>
+                        <input class="input" type="email" name="email"/>
+                    </div>
+                </div>
+                <div class="fiel">
+                    <div class="control">
+                        <label class="label" for="password">Contraseña</label>
+                        <input class="input" type="password" name="password"/>
+                    </div>
+                </div>
+                <div class="fiel">
+                    <div class="control">
+                        <button class="button is-primary" type="submit" value="Enviar">Ingresar</button>
+                    </div>
+                </div>
+                    <!-- <input type="submit" value="Enviar"> -->
                 </form>
 
                 <?php else: ?>

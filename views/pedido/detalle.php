@@ -6,13 +6,20 @@
         <form action="<?=base_url?>pedido/estado" method="POST">
         <!-- Saco el id del pedido, para el cual se le apliquen los cambios del select -->
             <input type="hidden" value="<?=$pedido->id?>" name="pedido_id"> 
-            <select name="estado">
-                <option value="confirm" <?=$pedido->estado == "confirm" ? 'selected' : ''?>>Pendiente</option>
-                <option value="preparation" <?=$pedido->estado == "preparation" ? 'selected' : ''?>>En preparacion</option>
-                <option value="ready" <?=$pedido->estado == "ready" ? 'selected' : ''?>>Preparado para enviar</option>
-                <option value="sended" <?=$pedido->estado == "sended" ? 'selected' : ''?>>Enviado</option>
-            </select>
-            <input type="submit" value="Cambiar Estado">
+            <div class="select">
+                <select name="estado">
+                    <option value="confirm" <?=$pedido->estado == "confirm" ? 'selected' : ''?>>Pendiente</option>
+                    <option value="preparation" <?=$pedido->estado == "preparation" ? 'selected' : ''?>>En preparacion</option>
+                    <option value="ready" <?=$pedido->estado == "ready" ? 'selected' : ''?>>Preparado para enviar</option>
+                    <option value="sended" <?=$pedido->estado == "sended" ? 'selected' : ''?>>Enviado</option>
+                </select>
+            </div>
+            <div class="fiel">
+                <div class="control">
+                    <button class="button is-info">Cambiar estado</button>
+                </div>
+            </div>
+            <!-- <input type="submit" value="Cambiar Estado"> -->
             <br>
         </form>
     <?php endif; ?>
