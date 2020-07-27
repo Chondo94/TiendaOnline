@@ -60,7 +60,7 @@ class usuarioController{
             $identity = $usuario->login();
 
              //Crear una sesion para mantener al Usuario identificado.
-            if(identity && is_object($identity)){
+            if($identity && is_object($identity)){
                 $_SESSION['identity'] = $identity;
                 
                 if($identity->rol == 'admin'){
