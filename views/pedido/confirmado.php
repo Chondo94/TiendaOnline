@@ -2,21 +2,21 @@
     <h1>Tu pedido se ha confirmado, Gracias...</h1>
     <P>
         Gracias por confirmar tu pedido, el ultimo pasa para poder recibir tu
-        pedido, es que pases a readtzar el deposito a nuestra cuenta bancaria.
-    </P>
+        pedido, es que pases a realizar el deposito a una de nuestra cuenta bancaria que se enlistan a continuación.
+    </P><br>
 
     <dl>
-        <dt> Banrural</dt>
-        <dd>- No. 444-53234 </dd>
-        <dt>G&T</dt>
-        <dd>- No. 6566-754544 </dd>
-        <dt>Industrial </dt>
-        <dd>- No. 3456-2222 </dd>
+        <dt><strong> Banrural</strong></dt>
+        <dd>    No. 444-53234 </dd>
+        <dt><strong>G&T</strong></dt>
+        <dd>    No. 6566-754544 </dd>
+        <dt><strong>Industrial </strong></dt>
+        <dd>    No. 3456-2222 </dd>
     </dl>
 
     <br>
     <?php if (isset($pedido)) : ?>
-        <h3>Datos del pedido:</h3>
+        <h3><strong>Datos del pedido:</strong></h3>
         <strong>Numero de pedido:</strong> <?= $pedido->id ?>
         <br>
         <strong>Total a pagar:</strong> Q.<?= $pedido->coste ?>

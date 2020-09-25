@@ -4,7 +4,7 @@
         <a href="href=<?= base_url ?>carrito/index">Ver los productos y el precio del pedido</a>
     </p>
     <br />
-    <h3>Direecion para enviar su pedido</h3>
+    <h3>Dirección para enviar su pedido</h3>
     <form action="<?= base_url . 'pedido/add' ?>" method="POST">
         <label for="provincia">Departamento</label>
         <input type="text" name="provincia" required>

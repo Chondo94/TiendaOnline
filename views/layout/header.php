@@ -14,7 +14,7 @@
             <div id="logo">
                 <img src="<?=base_url?>assets/img/camiseta.png" alt="logo-camiseta">
                 <a href="index.php">
-                    Tienda de Camisetas
+                Shop T-shirts
                 </a>
             </div>
         </div>
